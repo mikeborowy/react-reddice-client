@@ -5,7 +5,7 @@ export default class HelloWorld extends Component {
     render(){
         let {message} = this.props;
         return(
-            <div>{message}</div>
+            <div>Hello World!</div>
         );
     }
 
