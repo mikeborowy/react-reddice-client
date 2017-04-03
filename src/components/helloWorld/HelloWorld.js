@@ -1,18 +1,19 @@
 import React, {Component, PropTypes} from 'react';
 
-export default class HelloWorld extends Component {
+class HelloWorld extends Component {
 
-    render(){
+    render() {
         let {message} = this.props;
-        return(
+        return (
             <div className="jumbotron">
                 <h1>Hello World!</h1>
             </div>
         );
     }
-
 }
 
-HelloWorld.propTypes= {
+HelloWorld.propTypes = {
     message: PropTypes.string
-}
+};
+
+export default HelloWorld;

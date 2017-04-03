@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
 import NavigationBar from './navigationBar/NavigationBar';
 
-export default class App extends Component{
+export default class App extends Component {
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="container">
-                <NavigationBar/>
-                {this.props.children}
+                <NavigationBar/> {this.props.children}
             </div>
         )
     }
-} 
-
+}
