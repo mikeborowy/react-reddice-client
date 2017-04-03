@@ -5,7 +5,9 @@ export default class HelloWorld extends Component {
     render(){
         let {message} = this.props;
         return(
-            <div>Hello World!</div>
+            <div className="jumbotron">
+                <h1>Hello World!</h1>
+            </div>
         );
     }
 
