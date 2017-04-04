@@ -1,8 +1,11 @@
 import React from 'react';
 import {map} from 'lodash';
+import classnames from 'classnames';
+
 import timezone from '../../data/timezone';
 import TextFieldGroup from '../common/TextFieldGroup';
 import signupValidation from '../../helpers/signupValidation';
+import {browserHistory} from 'react-router';
 
 class SignUpForm extends React.Component {
 
@@ -42,7 +45,13 @@ class SignUpForm extends React.Component {
             this
                 .props
                 .OnSignUpRequest(this.state)
-                .then(() => {}, (error) => this.setState({errors: error.data, isLoading: false}));
+                .then(
+                    () => {
+                        // browserHistory.push('/');
+                        this.context.router.push('/');
+                    },
+                    (error) => this.setState({errors: error.data, isLoading: false})
+                );
         }
     }
 
@@ -94,12 +103,19 @@ class SignUpForm extends React.Component {
                     value={this.state.passwordConfirmation}
                     onChange={this.OnChange}
                     error={errors.passwordConfirmation}/>
-                <TextFieldGroup
-                    fieldName="timezone"
-                    label="Timezone"
-                    value={this.state.timezone}
-                    onChange={this.OnChange}
-                    error={errors.timezone}/>
+
+                 <div className={classnames("form-group", {'has-error': errors.timezone})}>
+                    <label htmlFor="timezone" className="control-label">Select Timezone</label>
+                    <select
+                        className="form-control"
+                        name="timezone"
+                        value={this.state.timezone}
+                        onChange={this.OnChange}>
+                            <option value="" disabled>Choose Your Timezone</option>
+                            {options}
+                        </select>
+                    {errors.timezone && <span className="help-block">{errors.timezone}</span>}
+                </div>
 
                 <div className="form-group">
                     <button disabled={this.state.isLoading} className="btn btn-primary btn-lg">Sign Up</button>
@@ -115,6 +131,10 @@ SignUpForm.defaultTypes = {
 
 SignUpForm.propTypes = {
     OnSignUpRequest: React.PropTypes.func.isRequired
+};
+
+SignUpForm.contextTypes = {
+    router: React.PropTypes.object.isRequired
 };
 
 export default SignUpForm;

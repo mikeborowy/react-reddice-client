@@ -7,7 +7,9 @@ router.post('/', (req, res) => {
 
     const {errors, isValid} = signupValidation(req.body);
 
-    if (!isValid) {
+    if (isValid) {
+        res.status(200).json({success:true});
+    }else{
         res.status(400).json(errors);
     }
 });
