@@ -1,4 +1,4 @@
-import * as types from '../../constants/actionTypes';
+import * as types from '../constants/actionTypes';
 
 export const ajaxCallStart =() => ({ type: types.AJAX_CALL_START });
 export const ajaxCallEnd = () => ({ type: types.AJAX_CALL_END });

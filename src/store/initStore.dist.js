@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import indexOfReducers from './reducers';
+import rootReducers from './reducers';
 import thunk from 'redux-thunk';
 
 /**
@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
  */
 export default function initStore(initialState) {
     return createStore(
-        indexOfReducers, 
+        rootReducers, 
         initialState, 
         applyMiddleware(thunk)
         );

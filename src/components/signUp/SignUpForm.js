@@ -1,11 +1,12 @@
 import React from 'react';
+import {browserHistory} from 'react-router';
+//3rd party
 import {map} from 'lodash';
 import classnames from 'classnames';
-
+//
 import timezone from '../../data/timezone';
 import TextFieldGroup from '../common/TextFieldGroup';
 import signupValidation from '../../helpers/signupValidation';
-import {browserHistory} from 'react-router';
 
 class SignUpForm extends React.Component {
 
@@ -44,9 +45,13 @@ class SignUpForm extends React.Component {
 
             this
                 .props
-                .OnSignUpRequest(this.state)
+                .onSignUpRequest(this.state)
                 .then(
                     () => {
+                        this.props.onAddFlashMessage({
+                            type: 'success',
+                            text: 'You signed up successful. Welcome'
+                        })
                         // browserHistory.push('/');
                         this.context.router.push('/');
                     },
@@ -126,11 +131,12 @@ class SignUpForm extends React.Component {
 }
 
 SignUpForm.defaultTypes = {
-    OnSignUpRequest: () => {}
+    onSignUpRequest: () => {}
 };
 
 SignUpForm.propTypes = {
-    OnSignUpRequest: React.PropTypes.func.isRequired
+    onSignUpRequest: React.PropTypes.func.isRequired,
+    onAddFlashMessage: React.PropTypes.func.isRequired
 };
 
 SignUpForm.contextTypes = {

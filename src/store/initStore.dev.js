@@ -1,7 +1,7 @@
 /*eslint-disable no-alert, no-console */
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk'; //allows can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. 
-import indexOfReducers from './reducers';
+import rootReducers from './reducers';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 
 /**
@@ -12,10 +12,13 @@ import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 export default function initStore(initialState) {
 
     return createStore(
-        indexOfReducers, 
-        initialState, 
-        applyMiddleware(thunk, consoleMessages, reduxImmutableStateInvariant())
-        );
+        rootReducers, 
+        initialState,
+        compose(
+            applyMiddleware(thunk, consoleMessages, reduxImmutableStateInvariant()),
+            window.devToolsExtension ? window.devToolsExtension() : f => f
+        )
+    );
 }
 
 const consoleMessages = (store) => (next) => (action) => {
