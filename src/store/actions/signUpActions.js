@@ -2,6 +2,6 @@ import axios from 'axios';
 
 export const OnSignUpRequest = (userData) => {
     return (dispatch) => {
-        axios.post('/api/users',{user: userData})
+        return axios.post('http://localhost:3333/api/users', userData);
     }
 }

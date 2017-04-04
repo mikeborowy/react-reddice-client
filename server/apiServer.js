@@ -1,26 +1,26 @@
 //http://localhost:3333/courses
 /*eslint-disable */
 import colors from 'colors';
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const open = require('open');
-// const { port=3333, delay=1000 } = require('minimist')(process.argv);
+import express from'express';
+import cors from'cors';
+import open from'open';
+import bodyParser from'body-parser';
+import users from './routes/users';
+
+// const { port=3333, delay=1000 } from'minimist')(process.argv);
 
 const logger = (req, res, next) => {
     console.log(`${req.method} request for ${req.url}`);
     next();
 }
 
-let data ={};
 const port = 3333;
 
 const app = express()
     .use(logger)
     .use(cors())
     .use(bodyParser.json())
-    .get(`/api/data`, (req, res) => res.status(200).json(data)) // get data
-    .post(`/api/data`, (req, res) => res.status(200).json(data = req.body)) // post data
+    .use(`/api/users`, users)
     .listen(port, function (err) { if (err) { console.log(err); } else { open(`http://localhost:${port}`); }});
 
  console.log(`Data Server is running at port:${port}.`.green);
