@@ -23,6 +23,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.0",
     "babel-polyfill": "^6.23.0",
     "bootstrap": "^3.3.7",
     "cors": "^2.8.1",

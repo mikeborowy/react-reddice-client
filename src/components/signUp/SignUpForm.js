@@ -27,7 +27,7 @@ class SignUpForm extends React.Component {
 
     OnSubmit(evt) {
         evt.preventDefault();
-        console.log(this.state);
+        this.props.OnSignUpRequest(this.state);
     }
 
     render() {
@@ -97,8 +97,16 @@ class SignUpForm extends React.Component {
                     <button className="btn btn-primary btn-lg">Sign Up</button>
                 </div>
             </form>
-        )
+        );
     }
+}
+
+SignUpForm.defaultTypes = {
+    OnSignUpRequest: () => {}
+};
+
+SignUpForm.propTypes = {
+    OnSignUpRequest: React.PropTypes.func.isRequired
 }
 
 export default SignUpForm;

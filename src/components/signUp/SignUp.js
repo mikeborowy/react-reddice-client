@@ -1,17 +1,30 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
 import SignUpForm from './SignUpForm';
+import {OnSignUpRequest} from '../../store/actions/signUpActions';
 
-class SignUp extends Component {
+class SignUp extends React.Component {
 
     render() {
+
+        const {OnSignUpRequest} = this.props;
+
         return (
             <div className="row">
                 <div className="col-md-4 col-md-offset-4">
-                    <SignUpForm/>
+                    <SignUpForm OnSignUpRequest={OnSignUpRequest}/>
                 </div>
             </div>
         );
     }
 }
 
-export default SignUp;
+SignUp.defaultTypes = {
+    OnSignUpRequest: () => {}
+};
+
+SignUp.propTypes = {
+    OnSignUpRequest: React.PropTypes.func.isRequired
+};
+
+export default connect ( null, { OnSignUpRequest } )(SignUp);

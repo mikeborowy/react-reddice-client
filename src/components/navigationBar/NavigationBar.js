@@ -1,9 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-export default () => {
-
-    return (
+export default () => (
         <nav className="navbar navbar-default">
             <div className="container-fluid">
                 <div className="navbar-header">
@@ -20,5 +18,4 @@ export default () => {
                 </div>
             </div>
         </nav>
-    );
-};
+);

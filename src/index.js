@@ -7,10 +7,17 @@ import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, browserHistory } from 'react-router';
+//Redux
+import {Provider} from 'react-redux';
+import initStore from './store';
 //App
 import routes from './routes';
 
+const store = initStore();
+
 render(
-  <Router routes={routes} history={browserHistory}/>, 
+  <Provider store={store}>
+    <Router routes={routes} history={browserHistory}/>
+  </Provider>, 
   document.getElementById('app')
 );
