@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
+import SignUpForm from './SignUpForm';
 
 class SignUp extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Sign Up</h1>
+            <div className="row">
+                <div className="col-md-4 col-md-offset-4">
+                    <SignUpForm/>
+                </div>
             </div>
         );
     }

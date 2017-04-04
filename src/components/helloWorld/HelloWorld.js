@@ -1,6 +1,6 @@
-import React, {Component, PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 
-class HelloWorld extends Component {
+class HelloWorld extends React.Component {
 
     render() {
         let {message} = this.props;
