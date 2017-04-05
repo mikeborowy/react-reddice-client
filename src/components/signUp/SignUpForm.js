@@ -23,12 +23,8 @@ class SignUpForm extends React.Component {
             isLoading: false
         };
 
-        this.OnChange = this
-            .OnChange
-            .bind(this);
-        this.OnSubmit = this
-            .OnSubmit
-            .bind(this);
+        this.OnChange = this.OnChange.bind(this);
+        this.OnSubmit = this.OnSubmit.bind(this);
     }
 
     OnChange(evt) {
@@ -43,8 +39,7 @@ class SignUpForm extends React.Component {
         if (this.formIsValid()) {
             this.setState({errors: {}, isLoading: true});
 
-            this
-                .props
+            this.props
                 .onSignUpRequest(this.state)
                 .then(
                     () => {
@@ -97,12 +92,14 @@ class SignUpForm extends React.Component {
                     onChange={this.OnChange}
                     error={errors.email}/>
                 <TextFieldGroup
+                    type="password"
                     fieldName="password"
                     label="Password"
                     value={this.state.password}
                     onChange={this.OnChange}
                     error={errors.password}/>
                 <TextFieldGroup
+                    type="password"
                     fieldName="passwordConfirmation"
                     label="Password Confirmation"
                     value={this.state.passwordConfirmation}
