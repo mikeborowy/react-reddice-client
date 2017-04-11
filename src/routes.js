@@ -4,10 +4,12 @@ import {Route, IndexRoute} from 'react-router';
 import App from './components/App';
 import HelloWorld from './components/helloWorld/HelloWorld';
 import SignUp from './components/signUp/SignUp';
+import Login from './components/login/Login';
 
 export default (
     <Route path="/" component={App}>
         <IndexRoute component={HelloWorld}/>
         <Route path="/signup" component={SignUp}/>
+        <Route path="/login" component={Login}/>
     </Route>
 );

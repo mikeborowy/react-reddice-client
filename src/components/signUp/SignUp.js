@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import SignUpForm from './SignUpForm';
-import {OnSignUpRequest} from '../../actions/signUpActions';
-import {OnAddFlashMessage} from '../../actions/flashMessageActions';
+import {OnSignUpRequest} from './_signUp.Actions';
+import {OnAddFlashMessage} from '../flashMessagesList/_flashMessage.Actions';
 
 class SignUp extends React.Component {
 
@@ -22,7 +22,7 @@ class SignUp extends React.Component {
 
 SignUp.defaultTypes = {
     OnSignUpRequest: () => {},
-    onAddFlashMessage: () => {}
+    OnAddFlashMessage: () => {}
 };
 
 SignUp.propTypes = {

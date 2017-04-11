@@ -1,5 +1,5 @@
 import express from 'express';
-import signupValidation from '../../src/helpers/signupValidation';
+import signupValidation from '../../src/components/signUp/helpers/signupValidation';
 
 
 let router = express.Router();

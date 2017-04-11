@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 // import { routerReducer } from 'react-router-redux';
-import ajaxCallsInProgress from './ajaxCallReducer';
-import flashMessages from './flashMessages';
+import ajaxCallsInProgress from './components/preloader/_preloader.Reducer';
+import flashMessages from './components/flashMessagesList/_flashMessages.Reducer';
 
 const rootReducer = combineReducers({
     // routing: routerReducer,

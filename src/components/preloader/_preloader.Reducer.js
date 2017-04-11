@@ -1,5 +1,5 @@
-import * as types from '../../constants/actionTypes';
-import initialState from '../initialState';
+import {types} from './_prelaoder.Actions';
+import initialState from '../../store/initialState';
 
 function actionsEndingWithSuccess(type) {
     return type.substring(type.length - 8) == '_SUCCESS';

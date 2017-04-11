@@ -1,7 +1,7 @@
 /*eslint-disable no-alert, no-console */
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk'; //allows can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. 
-import rootReducers from './reducers';
+import rootReducers from '../reducers';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 
 /**

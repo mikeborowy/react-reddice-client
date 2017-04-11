@@ -6,7 +6,7 @@ import classnames from 'classnames';
 //
 import timezone from '../../data/timezone';
 import TextFieldGroup from '../common/TextFieldGroup';
-import signupValidation from '../../helpers/signupValidation';
+import signupValidation from './helpers/signupValidation';
 
 class SignUpForm extends React.Component {
 
@@ -42,7 +42,7 @@ class SignUpForm extends React.Component {
             this.props
                 .onSignUpRequest(this.state)
                 .then(
-                    () => {
+                    (response) => {
                         this.props.onAddFlashMessage({
                             type: 'success',
                             text: 'You signed up successful. Welcome'
@@ -50,7 +50,9 @@ class SignUpForm extends React.Component {
                         // browserHistory.push('/');
                         this.context.router.push('/');
                     },
-                    (error) => this.setState({errors: error.data, isLoading: false})
+                    (error) => {
+                        this.setState({errors: error.data, isLoading: false});
+                    } 
                 );
         }
     }
@@ -131,13 +133,14 @@ SignUpForm.defaultTypes = {
     onSignUpRequest: () => {}
 };
 
+SignUpForm.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
+
 SignUpForm.propTypes = {
     onSignUpRequest: React.PropTypes.func.isRequired,
     onAddFlashMessage: React.PropTypes.func.isRequired
 };
 
-SignUpForm.contextTypes = {
-    router: React.PropTypes.object.isRequired
-};
 
 export default SignUpForm;

@@ -1,4 +1,4 @@
-import * as types from '../../constants/actionTypes';
+import {types} from './_flashMessage.Actions';
 import shortId from 'shortid';
 import lodash from 'lodash';
 
@@ -23,13 +23,15 @@ export default(prevState = [], action = {}) => {
 
         case types.DELETE_FLASH_MESSAGE:
             {
-                let obj = prevState.find( item => item.id == action.data );
-                let index = prevState.indexOf(obj);
+                //let messageObj = prevState.find( message => message.id == action.data );
+                //let index = prevState.indexOf(messageObj);
 
-                return [
-                    ...prevState.slice(0, index),
-                    ...prevState.slice(index + 1)
-                ]
+                // return [
+                //     ...prevState.slice(0, index),
+                //     ...prevState.slice(index + 1)
+                // ]
+
+               return prevState.filter( message => message.id !== action.data);
             }
 
         default:
