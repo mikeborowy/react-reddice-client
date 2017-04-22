@@ -17,10 +17,10 @@ export default function signupValidation (data){
     if (validator.isNull(data.password)) {
         errors.password = 'This field is required';
     }
-    if (validator.isNull(data.passwordConfirmation)) {
-        errors.passwordConfirmation = 'This field is required';
+    if (validator.isNull(data.confirmPassword)) {
+        errors.confirmPassword = 'This field is required';
     }
-    if (!validator.equals(data.password, data.passwordConfirmation)) {
+    if (!validator.equals(data.password, data.confirmPassword)) {
         errors.password = 'Passwords must match';
     }
     if (validator.isNull(data.timezone)) {

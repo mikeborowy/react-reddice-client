@@ -45,12 +45,22 @@ class LoginForm extends Component {
                     this.context.router.push('/');
 
                 }, 
-                (error) => {
+                (errorResponse) => {
 
-                    console.log("error", error)
+                    console.log("error", errorResponse)
 
-                    this.setState({errors: error.data, isLoading: false});
+                    let errors = {};
 
+                    switch(errorResponse.data.error){
+                        case "identifier":
+                            errors.identifier= errorResponse.data.error_description;
+                        break;
+                        case "password":
+                            errors.password= errorResponse.data.error_description;
+                        break;
+                    }
+
+                    this.setState({errors: errors, isLoading: false});
 
                 });
         }

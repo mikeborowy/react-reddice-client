@@ -6,7 +6,7 @@ export const OnSignUpRequest = (data) => {
         let userData = data;
             userData.roleId = 1;
 
-        return axios.post('http://localhost:8081/api/users', userData);
+        return axios.post('http://localhost:52404/api/Account/Register', userData);
 
         // return fetch('http://localhost:49968/api/users', {
         //     method: "POST",
