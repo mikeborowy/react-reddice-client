@@ -37,17 +37,11 @@ class LoginForm extends Component {
                 .OnLoginRequest(this.state)
                 .then((resposne) => {
 
-                    console.log("resposne", resposne);
-                    console.log("this.state", this.state);
-
                     this.props.OnAddFlashMessage({type: 'success', text: `Welcome ${this.state.identifier}`});
-
                     this.context.router.push('/');
 
                 }, 
                 (errorResponse) => {
-
-                    console.log("error", errorResponse)
 
                     let errors = {};
 

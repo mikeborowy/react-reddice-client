@@ -40,6 +40,10 @@ module.exports = {
 			canPrint: true
 		})
 	],
+	node:{
+		net: 'empty',
+		dns: 'empty'
+	},
 	module: {
 		loaders: [{
 				test: /\.js$/,

@@ -4,8 +4,6 @@ import lodash from 'lodash';
 
 export default(prevState = [], action = {}) => {
 
-    console.log(prevState)
-
     switch (action.type) {
         case types.ADD_FLASH_MESSAGE:
             {
