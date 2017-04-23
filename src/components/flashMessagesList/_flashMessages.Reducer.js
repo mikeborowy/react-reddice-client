@@ -32,6 +32,11 @@ export default(prevState = [], action = {}) => {
                return prevState.filter( message => message.id !== action.data);
             }
 
+             case types.CLEAR_FLASH_MESSAGES:
+            {
+                return [];
+            }
+
         default:
             return prevState;
     }

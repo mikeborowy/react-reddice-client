@@ -2,10 +2,12 @@ import axios from 'axios';
 import setHeaderAuthToken from './helpers/setHeaderAuthToken';
 
 export const types = {
-    SET_CURRENT_USER: 'SET_CURRENT_USER'
+    SET_CURRENT_USER: 'SET_CURRENT_USER',
+    LOGIN_USER: 'LOGIN_USER',
+    LOGOUT_USER: 'LOGOUT_USER'
 };
 
-export const OnSetCurrentUser = (user) =>({type: types.SET_CURRENT_USER, data: user});
+export const OnSetCurrentUser = (user) => ({type: types.SET_CURRENT_USER, data: user});
 export const OnLoginRequest = (data) => {
     return (dispatch) => {
 
@@ -22,7 +24,7 @@ export const OnLoginRequest = (data) => {
 
                 let user = {
                     userName: response.data.userName,
-                    iat:  response.data[".issued"],
+                    iat: response.data[".issued"],
                     expires: response.data[".expires"]
                 };
 
@@ -31,14 +33,19 @@ export const OnLoginRequest = (data) => {
                 dispatch(OnSetCurrentUser(user));
             });
 
-        // return axios.request({
-        //     method: 'POST',
-        //     url: 'http://localhost:52404/token',
-        //     headers: {
-        //         'content-type': 'application/x-www-form-url-encoded'
-        //     },
-        //     body: userData,
-        //     json: true
-        // })
+        // return axios.request({     method: 'POST',     url:
+        // 'http://localhost:52404/token',     headers: {         'content-type':
+        // 'application/x-www-form-url-encoded'     },     body: userData,     json:
+        // true })
     };
+};
+
+export const OnLogOut = () => {
+    return (dispatch) => {
+        
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('user');
+        setHeaderAuthToken(false);
+        dispatch(OnSetCurrentUser({}) );
+    }
 };

@@ -10,6 +10,9 @@ export default(prevState = initialState, action = {}) => {
 
     switch (action.type) {
         case types.SET_CURRENT_USER:
+
+            console.log("USER", action.data)
+
             return {
                 isAuthenticated: !isEmpty(action.data),
                 user: action.data
