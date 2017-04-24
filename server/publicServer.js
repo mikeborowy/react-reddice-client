@@ -6,11 +6,13 @@ const webpack = require('webpack');
 const path = require('path');
 const open = require('open');
 const compression = require('compression');
+const cors = require('cors');
 
 /*eslint-disable no-console */
 const port = 3001;
 
 const app = express()
+  .use(cors())
   .use(compression())
   .use(express.static('public'))
   .get('*', function (req, res) { res.sendFile(path.join(__dirname, '../public/index.html')); })

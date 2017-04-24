@@ -25,7 +25,7 @@ export const OnLoginRequest = (data) => {
                 let user = {
                     userName: response.data.userName,
                     iat: response.data[".issued"],
-                    expires: response.data[".expires"]
+                    exp: response.data[".expires"]
                 };
 
                 localStorage.setItem('user', JSON.stringify(user));
@@ -42,10 +42,14 @@ export const OnLoginRequest = (data) => {
 
 export const OnLogOut = () => {
     return (dispatch) => {
-        
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('user');
-        setHeaderAuthToken(false);
-        dispatch(OnSetCurrentUser({}) );
-    }
+
+        return axios
+            .post('http://localhost:8081/api/account/logout')
+            .then(response => {
+                localStorage.removeItem('accessToken');
+                localStorage.removeItem('user');
+                setHeaderAuthToken(false);
+                dispatch(OnSetCurrentUser({}));
+            });
+    };
 };

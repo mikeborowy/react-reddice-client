@@ -41,16 +41,16 @@ class LoginForm extends Component {
                     this.context.router.push('/');
 
                 }, 
-                (errorResponse) => {
+                (reject) => {
 
                     let errors = {};
 
-                    switch(errorResponse.data.error){
+                    switch(reject.data.error){
                         case "identifier":
-                            errors.identifier= errorResponse.data.error_description;
+                            errors.identifier= reject.data.error_description;
                         break;
                         case "password":
-                            errors.password= errorResponse.data.error_description;
+                            errors.password= reject.data.error_description;
                         break;
                     }
 

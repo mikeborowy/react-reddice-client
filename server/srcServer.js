@@ -6,15 +6,17 @@ import webpackConfig from'../webpack.config.dev';
 import webpackMiddleware from'webpack-dev-middleware';
 import webpackHotMiddleware from'webpack-hot-middleware';
 import open from'open';
+import cors from 'cors';
 
 /* eslint-disable no-console */
+
 const port = 3000;
 const compiler = webpack(webpackConfig);
 const app = express();
 
+app.use(cors());
 app.use( webpackMiddleware(compiler, { noInfo: true, hot: true, publicPath: webpackConfig.output.publicPath }) );
 app.use( webpackHotMiddleware(compiler) );
-
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '../src/index.html'));
 });

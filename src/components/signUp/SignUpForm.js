@@ -50,8 +50,35 @@ class SignUpForm extends React.Component {
                         // browserHistory.push('/');
                         this.context.router.push('/');
                     },
-                    (error) => {
-                        this.setState({errors: error.data, isLoading: false});
+                    (reject) => {
+
+                        let errors = {};
+                        let data = reject.data.modelState;
+
+                        //get values of object without considering key
+                        for(let propName in data) {
+                            if(data.hasOwnProperty(propName)) {
+
+                                let propValue = data[propName];
+
+                                propValue.forEach((element, i )=> {
+                                    
+                                    if(element.indexOf("Name") > -1 )
+                                        errors.username = element;
+
+                                    if(element.indexOf("Email") > -1 )
+                                        errors.email = element;
+
+                                    if(element.indexOf("Password") > -1 )
+                                        errors.password = element;
+
+                                    if(element.indexOf("PasswordConfirmation") > -1 )
+                                        errors.password = element;
+
+                                }, this);
+                            }
+                        }
+                        this.setState({errors: errors, isLoading: false});
                     } 
                 );
         }
