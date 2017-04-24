@@ -29,7 +29,6 @@ export const OnLoginRequest = (data) => {
                 };
 
                 localStorage.setItem('user', JSON.stringify(user));
-
                 dispatch(OnSetCurrentUser(user));
             });
 

@@ -6,12 +6,13 @@ import HelloWorld from './components/helloWorld/HelloWorld';
 import SignUp from './components/signUp/SignUp';
 import Login from './components/login/Login';
 import NewEventPage from './components/events/NewEventPage';
+import authWrapper from './components/authWrapper/AuthWrapper';
 
 export default (
     <Route path="/" component={App}>
         <IndexRoute component={HelloWorld}/>
         <Route path="/signup" component={SignUp}/>
         <Route path="/login" component={Login}/>
-        <Route path="/new-event" component={NewEventPage}/>
+        <Route path="/new-event" component={authWrapper(NewEventPage)}/>
     </Route>
 );
