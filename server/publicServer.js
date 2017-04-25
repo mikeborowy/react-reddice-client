@@ -13,7 +13,7 @@ const port = 3001;
 
 const app = express()
   .use(cors())
-  // .use(compression())
+  .use(compression())
   .use(express.static('public'))
   .get('*', function (req, res) { res.sendFile(path.join(__dirname, '../public/index.html')); })
   .listen(port, function (err) { if (err) { console.log(err); } else { open(`http://localhost:${port}`); }});
