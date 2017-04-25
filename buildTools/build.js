@@ -28,7 +28,7 @@ webpack(config).run((err, stats) => {
   console.log(`Webpack stats: ${stats}`);
 
   // if we got this far, the build succeeded.
-  console.log('Your app has been compiled in production mode and written to /dist. It\'s ready to roll!'.green);
+  console.log('Your app has been compiled in production mode and written to "/public" folder. It\'s ready to roll!'.green);
 
   return 0;
 });

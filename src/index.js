@@ -1,6 +1,6 @@
 //CSS
-import './styles/styles.scss';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import './styles/styles.scss';
 //Babel
 import 'babel-polyfill';
 //React
